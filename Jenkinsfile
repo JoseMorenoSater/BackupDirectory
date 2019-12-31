@@ -19,7 +19,7 @@ pipeline{
                }
             }     
       }  
-      stage ('Create file text'){
+      stage ('Create textfile'){
             steps{
                timestamps{
                   logstash{
@@ -27,7 +27,16 @@ pipeline{
                   }
                }
             }     
-      }   
+      }  
+      stage ('Add content to the file text'){
+            steps{
+               timestamps{
+                  logstash{
+              powershell "Set-Content file.txt 'Succesful Pipeline!, Check your logs on Elastic."
+                  }
+               }
+            }     
+      } 
       stage ('Move file to folder'){
            steps {
               timestamps{
