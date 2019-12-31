@@ -10,7 +10,7 @@ pipeline{
                }
             }     
       }
-       stage ('Create Backcup folder'){
+       stage ('Create Backup folder'){
             steps{
                timestamps{
                   logstash{
