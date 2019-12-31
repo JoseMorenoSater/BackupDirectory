@@ -32,7 +32,7 @@ pipeline{
            steps {
               timestamps{
                   logstash{
-             powershell "cp file.txt Backup"
+             powershell "Copy-Item file.txt Backup"
                   }
               }
            }
@@ -51,6 +51,15 @@ pipeline{
               timestamps{
                   logstash{
              powershell "rm -r Backup"
+                  }
+              }
+           }
+      }
+      stage ('Move Backup Zip'){
+           steps {
+              timestamps{
+                  logstash{
+             powershell "Move-Item backup.gz Important"
                   }
               }
            }
