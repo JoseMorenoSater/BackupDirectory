@@ -18,7 +18,16 @@ pipeline{
                   }
                }
             }     
-      }      
+      }  
+      stage ('Create file text'){
+            steps{
+               timestamps{
+                  logstash{
+              powershell "New-Item -Path 'file.txt' -ItemType File "
+                  }
+               }
+            }     
+      }   
       stage ('Copy file to folder'){
            steps {
               timestamps{
