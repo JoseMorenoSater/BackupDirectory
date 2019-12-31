@@ -3,23 +3,39 @@ pipeline{
    stages {
        stage ('Create folder'){
             steps{
+               timestamps{
+                  logstash{
               powershell "mkdir Important"
-              powershell "mkdir Backup"
+              powershell "mkdir backup"
+                  }
+               }
             }     
       }
       stage ('Copy file to folder'){
            steps {
-             powershell "cp file.txt Backup"
+              timestamps{
+                  logstash{
+             powershell "cp file.txt backup"
+                  }
+              }
            }
       }
       stage ('Zip Backup'){
            steps {
-             powershell "tar -zcvf backup.gz Backup"
+              timestamps{
+                  logstash{
+             powershell "tar -zcvf backup.gz backup"
+                  }
+              }
            }
       }
       stage ('Delete Backup folder'){
            steps {
-             powershell "rm -r Backup"
+              timestamps{
+                  logstash{
+             powershell "rm -r backup"
+                  }
+              }
            }
       }
    }
