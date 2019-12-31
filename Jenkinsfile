@@ -28,11 +28,11 @@ pipeline{
                }
             }     
       }   
-      stage ('Copy file to folder'){
+      stage ('Move file to folder'){
            steps {
               timestamps{
                   logstash{
-             powershell "Copy-Item file.txt Backup"
+             powershell "Move-Item file.txt Backup"
                   }
               }
            }
