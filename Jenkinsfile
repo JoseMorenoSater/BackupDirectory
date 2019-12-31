@@ -1,21 +1,29 @@
 pipeline{
    agent any
    stages {
-       stage ('Create folder'){
+       stage ('Create Important folder'){
             steps{
                timestamps{
                   logstash{
               powershell "mkdir Important"
-              powershell "mkdir backup"
                   }
                }
             }     
       }
+       stage ('Create Backcup folder'){
+            steps{
+               timestamps{
+                  logstash{
+              powershell "mkdir Backup"
+                  }
+               }
+            }     
+      }      
       stage ('Copy file to folder'){
            steps {
               timestamps{
                   logstash{
-             powershell "cp file.txt backup"
+             powershell "cp file.txt Backup"
                   }
               }
            }
@@ -24,7 +32,7 @@ pipeline{
            steps {
               timestamps{
                   logstash{
-             powershell "tar -zcvf backup.gz backup"
+             powershell "tar -zcvf backup.gz Backup"
                   }
               }
            }
@@ -33,7 +41,7 @@ pipeline{
            steps {
               timestamps{
                   logstash{
-             powershell "rm -r backup"
+             powershell "rm -r Backup"
                   }
               }
            }
