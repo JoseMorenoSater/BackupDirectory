@@ -32,7 +32,7 @@ pipeline{
             steps{
                timestamps{
                   logstash{
-              powershell "Set-Content file.txt 'Succesful Pipeline!, Check your logs on Elastic."
+              powershell "Set-Content file.txt 'Succesful Pipeline!, Check your logs on Elastic.'"
                   }
                }
             }     
